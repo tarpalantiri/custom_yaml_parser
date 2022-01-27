@@ -18,7 +18,7 @@ class Pod:
 class Gate:
     gate_position: str
     door_open_request : bool
-    door_angle: bool
+    door_angle: int
     door_blocked: bool
     manual_override: bool
     door_locked: bool

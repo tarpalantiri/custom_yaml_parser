@@ -4,7 +4,7 @@ from .models import Pod, Pod_Coordinates, Gate_Info, Gate, Airlock, Astronaut
 
 class Custom_Parser:
     @staticmethod
-    def parse_yaml(yaml_file_path="./facility.yaml"):
+    def parse_yaml(yaml_file_path):
         """
         :param yaml_file_path: Path to the yaml file
         :return: List with all the documents
@@ -17,25 +17,16 @@ class Custom_Parser:
     @staticmethod
     def make_pod(index, parsed_dict):
         formated_dict = dict()
-        
         # Adding Pod Index
         formated_dict["Pod_index"] = int(index)
-        
         # Constructing Coordinates
         formated_dict['Coordinates'] = Pod_Coordinates(
-            North=parsed_dict["North"],
-            East=parsed_dict["East"],
-            South=parsed_dict["South"],
-            West=parsed_dict["West"]
+            North=parsed_dict.pop('North', None),
+            East=parsed_dict.pop('East', None),
+            South=parsed_dict.pop('South', None),
+            West=parsed_dict.pop('West', None)
         )
-        
-        # Turn 1s and 0s to bools
-        for key, value in parsed_dict.items():
-            if key not in ['North', 'East', 'South', 'West']:
-                # Turn all the 1s and 0s to bools
-                if isinstance(value, int):
-                    value = bool(value)
-                formated_dict[key] = value
+        formated_dict.update(parsed_dict)
         return Pod(**formated_dict)
     
     @staticmethod

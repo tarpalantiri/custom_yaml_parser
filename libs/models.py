@@ -11,7 +11,7 @@ class Pod_Coordinates:
 
 @dataclass(order=True)
 class Pod:
-    Pod_index:                    int
+    Id:                           int
     Type:                         str
     Has_Child:                    list
     Coordinates:                  Pod_Coordinates
@@ -26,7 +26,7 @@ class Pod:
     
     def __post_init__(self):
         # Validation
-        self.Pod_index = int(self.Pod_index)
+        self.Id = int(self.Id)
         self.Has_Life_Support = bool(self.Has_Life_Support)
         self.Critical_Life_Support_Active = bool(self.Critical_Life_Support_Active)
         self.Has_Fire = bool(self.Has_Fire)
@@ -34,6 +34,7 @@ class Pod:
         self.Has_Other_Hazard = bool(self.Has_Other_Hazard)
         self.Vent_Active = bool(self.Vent_Active)
         self.Warning_Alarm_Active = bool(self.Warning_Alarm_Active)
+        self.sort_index = self.Id
 
 @dataclass(order=True)
 class Gate_Info:
@@ -57,15 +58,18 @@ class Gate_Info:
 
 @dataclass(order=True)
 class Gate:
-    Gate_id:  str
+    Id:  str
     # Both are initialized to None so we can have the possiblity of
     # having only one gate info
     Int_Gate: Gate_Info = None
     Ext_Gate: Gate_Info = None
+    
+    def __post_init__(self):
+        self.sort_index = self.Id
 
 @dataclass(order=True)
 class Airlock:
-    Airlock_id:              str
+    Id:                      str
     Extractor_Active:        bool
     Vent_Active:             bool
     Has_Fire:                bool
@@ -80,6 +84,7 @@ class Airlock:
         self.Vent_Active = bool(self.Vent_Active)
         self.Fire_Suppression_Active = bool(self.Fire_Suppression_Active)
         self.Has_Other_Hazard = bool(self.Has_Other_Hazard)
+        self.sort_index = self.Id
     
 @dataclass(order=True)
 class Astronaut:
@@ -88,5 +93,8 @@ class Astronaut:
     Location:      str
     Biometrics:    list
     Authorisation: list
+    
+    def __post_init__(self):
+        self.sort_index = self.Id
     
     

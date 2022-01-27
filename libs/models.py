@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from libs.exceptions import InvalidDoorAngleValue
 
 
@@ -33,17 +33,22 @@ class Gate_Info:
     door_locked: bool
 
     def __post_init__(self):
-        if 0 < self.door_angle < 135:
+        # Validation & convertion of ints to bools
+        if self.door_angle not in range(0, 136):
             raise InvalidDoorAngleValue(
                 angle_value=self.door_angle,
                 message="Gate Door_Angle must be between 0 and 135"
                 )
+        self.door_open_request = bool(self.door_open_request)
+        self.door_blocked = bool(self.door_blocked)
+        self.manual_override = bool(self.manual_override)
+        self.door_locked = bool(self.door_locked)
 
 @dataclass
 class Gate:
     gate_id: str
-    interior_gate: None or Gate_Info
-    exterior_gate: None or Gate_Info
+    int_gate: Gate_Info = None
+    ext_gate: Gate_Info = None
 
 @dataclass
 class Airlock:

@@ -1,15 +1,22 @@
+import os
 import yaml
-from pprint import pprint
 from libs.parser import Custom_Parser
 
+FILE_NAME = 'facility.yaml'
 
 if __name__ == '__main__':
+    # Getting file path
+    current_dir = os.getcwd()
+    yaml_path = os.path.join(current_dir, FILE_NAME)
+    
     # Parsing YAML File
     yaml_file_stream = open('./facility.yaml', 'r')
     all_docs = yaml.load_all(yaml_file_stream, Loader=yaml.FullLoader)
     
     # Seperating into individual dicts
     pods_dict, gates_dict, airlocks_dict, astros_dict = all_docs
+    
+    # Closing the File Stream
     yaml_file_stream.close()
     
     # Generators of all objects.
@@ -28,8 +35,5 @@ if __name__ == '__main__':
         Custom_Parser.make_astronaut(index, data) for index, data in
         astros_dict.items()
     )
-    
-    for pod in all_pods:
-        pprint(pod)
     
     

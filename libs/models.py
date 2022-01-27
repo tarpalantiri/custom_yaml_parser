@@ -1,10 +1,19 @@
 from dataclasses import dataclass
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, order=True)
+class Pod_Coordinates:
+    north: float
+    south: float
+    west: float
+    east: float
+    
+
+@dataclass
 class Pod:
+    pod_index: int
     type: str
     has_child: list
-    coords: dict
+    coords: Pod_Coordinates
     contains_astronaut: list
     has_life_support: bool
     critical_life_support_active: bool
@@ -14,7 +23,7 @@ class Pod:
     vent_active: bool
     warning_alarm_active: bool
 
-@dataclass(frozen=True)
+@dataclass
 class Gate:
     gate_position: str
     door_open_request : bool
@@ -23,7 +32,7 @@ class Gate:
     manual_override: bool
     door_locked: bool
 
-@dataclass(frozen=True)
+@dataclass
 class Airlock:
     extractor_active: bool
     vent_active: bool
@@ -32,7 +41,7 @@ class Airlock:
     has_other_hazard: bool
     gate: Gate
 
-@dataclass(frozen=True)
+@dataclass
 class Astronaut:
     name: str
     location: str

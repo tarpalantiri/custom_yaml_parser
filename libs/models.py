@@ -62,6 +62,12 @@ class Airlock:
     Int_Gate: Gate_Info = None
     Ext_Gate: Gate_Info = None
     
+    def __post_init__(self):
+        self.Extractor_Active = bool(self.Extractor_Active)
+        self.Vent_Active = bool(self.Vent_Active)
+        self.Fire_Suppression_Active = bool(self.Fire_Suppression_Active)
+        self.Has_Other_Hazard = bool(self.Has_Other_Hazard)
+    
 @dataclass
 class Astronaut:
     Name: str

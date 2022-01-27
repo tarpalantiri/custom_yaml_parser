@@ -1,5 +1,6 @@
 import yaml
-from .models import Pod, Pod_Coordinates, Gate_Info, Gate
+from .models import Pod, Pod_Coordinates, Gate_Info, Gate, Airlock
+
 
 def parse_yaml(yaml_file_path="./facility.yaml"):
     """
@@ -44,4 +45,15 @@ def make_gate(gate_id, parsed_dict):
     return Gate(**formated_dict)
 
 def make_airlock(airlock_id, parsed_dict):
-    pass
+    formated_dict = dict()
+    # Extracting interior and exterior gate dicts
+    int_gate_dict = parsed_dict.pop('Int_Gate', None)
+    ext_gate_dict = parsed_dict.pop('Ext_Gate', None)
+    if int_gate_dict is not None and ext_gate_dict is not None:
+        formated_dict['Int_Gate'] = Gate_Info(**int_gate_dict)
+        formated_dict['Ext_Gate'] = Gate_Info(**ext_gate_dict)
+    
+    # Merging other parameters
+    formated_dict.update(parsed_dict)
+    return Airlock(**formated_dict)
+    

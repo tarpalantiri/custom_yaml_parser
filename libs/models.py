@@ -47,6 +47,8 @@ class Gate_Info:
 @dataclass
 class Gate:
     gate_id: str
+    # Both are initialized to None so we can have the possiblity of
+    # having only one gate info
     int_gate: Gate_Info = None
     ext_gate: Gate_Info = None
 
@@ -57,8 +59,9 @@ class Airlock:
     has_fire: bool
     fire_suppression_active: bool
     has_other_hazard: bool
-    gate: Gate
-
+    int_gate: Gate_Info = None
+    ext_gate: Gate_Info = None
+    
 @dataclass
 class Astronaut:
     name: str

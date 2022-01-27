@@ -41,7 +41,7 @@ class Gate_Info:
 
 @dataclass
 class Gate:
-    gate_location: str
+    gate_id: str
     interior_gate: None or Gate_Info
     exterior_gate: None or Gate_Info
 

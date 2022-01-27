@@ -4,7 +4,7 @@ from libs.parser import Custom_Parser
 
 FILE_NAME = 'facility.yaml'
 
-if __name__ == '__main__':
+def main(filename):
     # Getting file path
     current_dir = os.getcwd()
     yaml_path = os.path.join(current_dir, FILE_NAME)
@@ -35,5 +35,6 @@ if __name__ == '__main__':
         Custom_Parser.make_astronaut(index, data) for index, data in
         astros_dict.items()
     )
-    
-    
+
+if __name__ == '__main__':
+    main(FILE_NAME)

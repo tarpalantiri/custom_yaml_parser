@@ -11,26 +11,26 @@ class Pod_Coordinates:
 
 @dataclass
 class Pod:
-    Pod_index: int
-    Type: str
-    Has_Child: list
-    Coordinates: Pod_Coordinates
-    Contains_Astronaut: list
-    Has_Life_Support: bool
+    Pod_index:                    int
+    Type:                         str
+    Has_Child:                    list
+    Coordinates:                  Pod_Coordinates
+    Contains_Astronaut:           list
+    Has_Life_Support:             bool
     Critical_Life_Support_Active: bool
-    Has_Fire: bool
-    Fire_Suppression_Active: bool
-    Has_Other_Hazard: bool
-    Vent_Active: bool
-    Warning_Alarm_Active: bool
+    Has_Fire:                     bool
+    Fire_Suppression_Active:      bool
+    Has_Other_Hazard:             bool
+    Vent_Active:                  bool
+    Warning_Alarm_Active:         bool
 
 @dataclass
 class Gate_Info:
     Door_Open_Request : bool
-    Door_Angle: int
-    Door_Blocked: bool
-    Manual_Override: bool
-    Door_Locked: bool
+    Door_Angle:         int
+    Door_Blocked:       bool
+    Manual_Override:    bool
+    Door_Locked:        bool
 
     def __post_init__(self):
         # Validation & convertion of ints to bools
@@ -46,7 +46,7 @@ class Gate_Info:
 
 @dataclass
 class Gate:
-    Gate_id: str
+    Gate_id:  str
     # Both are initialized to None so we can have the possiblity of
     # having only one gate info
     Int_Gate: Gate_Info = None
@@ -54,13 +54,13 @@ class Gate:
 
 @dataclass
 class Airlock:
-    Extractor_Active: bool
-    Vent_Active: bool
-    Has_Fire: bool
+    Extractor_Active:        bool
+    Vent_Active:             bool
+    Has_Fire:                bool
     Fire_Suppression_Active: bool
-    Has_Other_Hazard: bool
-    Int_Gate: Gate_Info = None
-    Ext_Gate: Gate_Info = None
+    Has_Other_Hazard:        bool
+    Int_Gate:                Gate_Info = None
+    Ext_Gate:                Gate_Info = None
     
     def __post_init__(self):
         self.Extractor_Active = bool(self.Extractor_Active)
@@ -70,9 +70,10 @@ class Airlock:
     
 @dataclass
 class Astronaut:
-    Name: str
-    Location: str
-    Biometrics: None
-    Authorisation: None
+    Id:            str
+    Name:          str
+    Location:      str
+    Biometrics:    list
+    Authorisation: list
     
     

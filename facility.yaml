@@ -268,7 +268,6 @@
 P01:
     Name: "Astro Naut"
     Location: "03"
-    Biometrics:
-        #Not sure yet
-    Authorisation: #Is this needed?
+    Biometrics: [0]
+    Authorisation: [0]
 ...

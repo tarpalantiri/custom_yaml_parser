@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from libs.exceptions import InvalidDoorAngleValue
+
 
 @dataclass(frozen=True, order=True)
 class Pod_Coordinates:
@@ -31,6 +33,14 @@ class Gate:
     door_blocked: bool
     manual_override: bool
     door_locked: bool
+
+    def __post_init__(self):
+        if 0 < self.door_angle < 135:
+            raise InvalidDoorAngleValue(
+                self.door_angle,
+                "Gate Door_Angle must be between 0 "
+                "and 135"
+                )
 
 @dataclass
 class Airlock:

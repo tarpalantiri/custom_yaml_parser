@@ -4,11 +4,10 @@ from libs.exceptions import InvalidDoorAngleValue
 
 @dataclass(frozen=True, order=True)
 class Pod_Coordinates:
-    north: float
-    south: float
-    west: float
-    east: float
-    
+    north: list
+    south: list
+    west:  list
+    east:  list
 
 @dataclass
 class Pod:
@@ -26,8 +25,7 @@ class Pod:
     warning_alarm_active: bool
 
 @dataclass
-class Gate:
-    gate_position: str
+class Gate_Info:
     door_open_request : bool
     door_angle: int
     door_blocked: bool
@@ -40,6 +38,12 @@ class Gate:
                 angle_value=self.door_angle,
                 message="Gate Door_Angle must be between 0 and 135"
                 )
+
+@dataclass
+class Gate:
+    gate_location: str
+    interior_gate: None or Gate_Info
+    exterior_gate: None or Gate_Info
 
 @dataclass
 class Airlock:

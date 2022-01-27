@@ -1,14 +1,11 @@
-import yaml
 from .models import Pod, Pod_Coordinates, Gate_Info, Gate, Airlock, Astronaut
 
-
 class Custom_Parser:
-    
     @staticmethod
     def make_pod(index, parsed_dict):
         formated_dict = dict()
         # Adding Pod Index
-        formated_dict["Pod_index"] = int(index)
+        formated_dict["Id"] = int(index)
         # Constructing Coordinates
         formated_dict['Coordinates'] = Pod_Coordinates(
             North=parsed_dict.pop('North', None),
@@ -22,7 +19,7 @@ class Custom_Parser:
     @staticmethod
     def make_gate(gate_id, parsed_dict):
         formated_dict = dict()
-        formated_dict['Gate_id'] = gate_id
+        formated_dict['Id'] = gate_id
         # Add gate info
         for gate_loc, gate_info in parsed_dict.items():
             # Making a Gate_Info obejct
@@ -32,7 +29,7 @@ class Custom_Parser:
     @staticmethod
     def make_airlock(airlock_id, parsed_dict):
         formated_dict = dict()
-        formated_dict['Airlock_id'] = airlock_id
+        formated_dict['Id'] = airlock_id
         # Extracting interior and exterior gate dicts
         int_gate_dict = parsed_dict.pop('Int_Gate', None)
         ext_gate_dict = parsed_dict.pop('Ext_Gate', None)
@@ -52,5 +49,4 @@ class Custom_Parser:
             'Location': parsed_dict['Location'],
             'Authorisation': parsed_dict['Authorisation']
         }
-        
         return Astronaut(**formated_dict)

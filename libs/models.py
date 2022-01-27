@@ -11,7 +11,7 @@ class Pod_Coordinates:
 
 @dataclass(order=True)
 class Pod:
-    Id:                           int
+    Id:                           str
     Type:                         str
     Has_Child:                    list
     Coordinates:                  Pod_Coordinates
@@ -26,7 +26,6 @@ class Pod:
     
     def __post_init__(self):
         # Validation
-        self.Id = int(self.Id)
         self.Has_Life_Support = bool(self.Has_Life_Support)
         self.Critical_Life_Support_Active = bool(self.Critical_Life_Support_Active)
         self.Has_Fire = bool(self.Has_Fire)

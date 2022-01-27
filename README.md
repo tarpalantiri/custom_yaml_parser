@@ -3,6 +3,9 @@
   - [X] Pods
   - [X] Gates
   - [X] Airlocks
-  - [ ] Astronauts
+  - [X] Astronauts
+
+## Printing All Values
+  - [ ] Done
   
 

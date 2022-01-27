@@ -11,16 +11,18 @@ def parse_yaml(yaml_file_path="./facility.yaml"):
     # Parsing the YAML file
     yaml_file_stream = open(yaml_file_path, 'r')
     all_docs = yaml.load_all(yaml_file_stream, Loader=yaml.FullLoader)
-    # pods, gates, airlocks, astronauts = [*all_docs]
-    
     return [*all_docs]
 
 def make_pod(index, parsed_dict):
     sanitized = dict()
+    # Turn all key strings to lower case, so the dataclass can be
+    # given a dict as a parameter
+    parsed_dict = {key.lower() : value for key, value in parsed_dict}
+    
     # Adding Pod Index
     sanitized["pod_index"] = int(index)
     
-    # Construct Coordinates
+    # Constructing Coordinates
     sanitized['coords'] = Pod_Coordinates(
         north=parsed_dict["North"],
         east=parsed_dict["East"],
@@ -30,15 +32,13 @@ def make_pod(index, parsed_dict):
     
     # Turn 1s and 0s to bools
     for key, value in parsed_dict.items():
-        key = key.lower()
         if key not in ['north', 'east', 'south', 'west']:
             # Turn all the 1s and 0s to bools
             if isinstance(value, int):
                 value = bool(value)
             sanitized[key] = value
     return Pod(**sanitized)
-    
-    
+
     
     
     

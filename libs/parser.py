@@ -32,6 +32,7 @@ class Custom_Parser:
     @staticmethod
     def make_airlock(airlock_id, parsed_dict):
         formated_dict = dict()
+        formated_dict['Airlock_id'] = airlock_id
         # Extracting interior and exterior gate dicts
         int_gate_dict = parsed_dict.pop('Int_Gate', None)
         ext_gate_dict = parsed_dict.pop('Ext_Gate', None)

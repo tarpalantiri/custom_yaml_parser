@@ -9,7 +9,7 @@ class Pod_Coordinates:
     West:  list
     East:  list
 
-@dataclass
+@dataclass(order=True)
 class Pod:
     Pod_index:                    int
     Type:                         str
@@ -25,6 +25,7 @@ class Pod:
     Warning_Alarm_Active:         bool
     
     def __post_init__(self):
+        # Validation
         self.Pod_index = int(self.Pod_index)
         self.Has_Life_Support = bool(self.Has_Life_Support)
         self.Critical_Life_Support_Active = bool(self.Critical_Life_Support_Active)
@@ -34,7 +35,7 @@ class Pod:
         self.Vent_Active = bool(self.Vent_Active)
         self.Warning_Alarm_Active = bool(self.Warning_Alarm_Active)
 
-@dataclass
+@dataclass(order=True)
 class Gate_Info:
     Door_Open_Request : bool
     Door_Angle:         int
@@ -43,7 +44,7 @@ class Gate_Info:
     Door_Locked:        bool
 
     def __post_init__(self):
-        # Validation & convertion of ints to bools
+        # Validation
         if self.Door_Angle not in range(0, 136):
             raise InvalidDoorAngleValue(
                 angle_value=self.Door_Angle,
@@ -54,7 +55,7 @@ class Gate_Info:
         self.Manual_Override = bool(self.Manual_Override)
         self.Door_Locked = bool(self.Door_Locked)
 
-@dataclass
+@dataclass(order=True)
 class Gate:
     Gate_id:  str
     # Both are initialized to None so we can have the possiblity of
@@ -62,8 +63,9 @@ class Gate:
     Int_Gate: Gate_Info = None
     Ext_Gate: Gate_Info = None
 
-@dataclass
+@dataclass(order=True)
 class Airlock:
+    Airlock_id:              str
     Extractor_Active:        bool
     Vent_Active:             bool
     Has_Fire:                bool
@@ -73,12 +75,13 @@ class Airlock:
     Ext_Gate:                Gate_Info = None
     
     def __post_init__(self):
+        # Validation
         self.Extractor_Active = bool(self.Extractor_Active)
         self.Vent_Active = bool(self.Vent_Active)
         self.Fire_Suppression_Active = bool(self.Fire_Suppression_Active)
         self.Has_Other_Hazard = bool(self.Has_Other_Hazard)
     
-@dataclass
+@dataclass(order=True)
 class Astronaut:
     Id:            str
     Name:          str

@@ -37,9 +37,8 @@ class Gate:
     def __post_init__(self):
         if 0 < self.door_angle < 135:
             raise InvalidDoorAngleValue(
-                self.door_angle,
-                "Gate Door_Angle must be between 0 "
-                "and 135"
+                angle_value=self.door_angle,
+                message="Gate Door_Angle must be between 0 and 135"
                 )
 
 @dataclass

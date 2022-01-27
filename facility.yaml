@@ -1,0 +1,274 @@
+---
+#Pods
+01:
+    Type: A
+    Has_Child: [0]
+    North: [0]
+    East: [0]
+    South: [1, "01A"]
+    West: [0]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+02:
+    Type: A
+    Has_Child: [0]
+    North: [0]
+    East: [1, "02G03"]
+    South: [0]
+    West: [1, "02A"]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+03:
+    Type: A
+    Has_Child: [1, "04"]
+    North: [1, "03G06"]
+    East: [1, "03G05"]
+    South: [1, "03G08"]
+    West: [1, "02G03"]
+    Contains_Astronaut: [1, "P01"]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+04:
+    Type: B
+    Has_Child: 0
+    North: [0]
+    East: [1, "03G04A"]
+    South: [0]
+    West: [1, "02G04B"]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+05:
+    Type: A
+    Has_Child: [0]
+    North: [1, "05G07"]
+    East: [1, "05A"]
+    South: [0]
+    West: [1, "03G05"]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+06:
+    Type: B
+    Has_Child: [0]
+    North: [0]
+    East: [0]
+    South: [1, "03G06"]
+    West: [0]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+07:
+    Type: B
+    Has_Child: [0]
+    North: [0]
+    East: [0]
+    South: [1, "05G07"]
+    West: [0]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+08:
+    Type: B
+    Has_Child: [0]
+    North: [1, "03G08"]
+    East: [0]
+    South: [1, "08A"]
+    West: [0]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+09:
+    Type: B
+    Has_Child: [0]
+    North: [1, "09A"]
+    East: [0]
+    South: [0]
+    West: [0]
+    Contains_Astronaut: [0]
+    Has_Life_Support: 1
+    Critical_Life_Support_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Vent_Active: 0
+    Warning_Alarm_Active: 0
+...
+---
+#Gates
+02G03:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0 #0 to 135
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+03G04A:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+03G04B:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+03G05:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+03G06:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+03G08:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+05G07:
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+...
+---
+#Airlocks
+01A:
+    Extractor_Active: 0
+    Vent_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0 #0 to 135
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+    Ext_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+02A:
+    Extractor_Active: 0
+    Vent_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+    Ext_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+08A:
+    Extractor_Active: 0
+    Vent_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+    Ext_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+09A:
+    Extractor_Active: 0
+    Vent_Active: 0
+    Has_Fire: 0
+    Fire_Suppression_Active: 0
+    Has_Other_Hazard: 0
+    Int_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+    Ext_Gate:
+        Door_Open_Request: 0
+        Door_Angle: 0
+        Door_Blocked: 0
+        Manual_Override: 0
+        Door_Locked: 0
+...
+---
+#Astronauts
+P01:
+    Name: "Astro Naut"
+    Location: "03"
+    Biometrics:
+        #Not sure yet
+    Authorisation: #Is this needed?
+...

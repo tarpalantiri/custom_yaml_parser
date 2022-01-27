@@ -1,12 +1,35 @@
+import yaml
 from pprint import pprint
-from libs.parser import parse_yaml, make_pod, make_gate, make_airlock
+from libs.parser import Custom_Parser
 
-# Main File is for testing purposes only
-# Later we'll add the final Interface
+
 if __name__ == '__main__':
-    p = parse_yaml("./facility.yaml")
-    pods, gates, airlocks, astronauts = p
+    # Parsing YAML File
+    yaml_file_stream = open('./facility.yaml', 'r')
+    all_docs = yaml.load_all(yaml_file_stream, Loader=yaml.FullLoader)
     
-    for airlock_id, data in airlocks.items():
-        print(airlock_id)
-        print(make_airlock(airlock_id, data))
+    # Seperating into individual dicts
+    pods_dict, gates_dict, airlocks_dict, astros_dict = all_docs
+    yaml_file_stream.close()
+    
+    # Generators of all objects.
+    all_pods = (
+        Custom_Parser.make_pod(index, data) for index, data in pods_dict.items()
+    )
+    all_gates = (
+        Custom_Parser.make_gate(index, data) for index, data in
+        gates_dict.items()
+    )
+    all_airlocks = (
+        Custom_Parser.make_airlock(index, data) for index, data in
+        airlocks_dict.items()
+    )
+    all_astros = (
+        Custom_Parser.make_astronaut(index, data) for index, data in
+        astros_dict.items()
+    )
+    
+    for pod in all_pods:
+        pprint(pod)
+    
+    

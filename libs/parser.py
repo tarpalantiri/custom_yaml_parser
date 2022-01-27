@@ -3,16 +3,6 @@ from .models import Pod, Pod_Coordinates, Gate_Info, Gate, Airlock, Astronaut
 
 
 class Custom_Parser:
-    @staticmethod
-    def parse_yaml(yaml_file_path):
-        """
-        :param yaml_file_path: Path to the yaml file
-        :return: List with all the documents
-        """
-        # Parsing the YAML file
-        yaml_file_stream = open(yaml_file_path, 'r')
-        all_docs = yaml.load_all(yaml_file_stream, Loader=yaml.FullLoader)
-        return [*all_docs]
     
     @staticmethod
     def make_pod(index, parsed_dict):

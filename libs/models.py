@@ -23,6 +23,16 @@ class Pod:
     Has_Other_Hazard:             bool
     Vent_Active:                  bool
     Warning_Alarm_Active:         bool
+    
+    def __post_init__(self):
+        self.Pod_index = int(self.Pod_index)
+        self.Has_Life_Support = bool(self.Has_Life_Support)
+        self.Critical_Life_Support_Active = bool(self.Critical_Life_Support_Active)
+        self.Has_Fire = bool(self.Has_Fire)
+        self.Fire_Suppression_Active = bool(self.Fire_Suppression_Active)
+        self.Has_Other_Hazard = bool(self.Has_Other_Hazard)
+        self.Vent_Active = bool(self.Vent_Active)
+        self.Warning_Alarm_Active = bool(self.Warning_Alarm_Active)
 
 @dataclass
 class Gate_Info:

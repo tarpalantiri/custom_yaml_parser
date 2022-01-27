@@ -4,69 +4,69 @@ from libs.exceptions import InvalidDoorAngleValue
 
 @dataclass(frozen=True, order=True)
 class Pod_Coordinates:
-    north: list
-    south: list
-    west:  list
-    east:  list
+    North: list
+    South: list
+    West:  list
+    East:  list
 
 @dataclass
 class Pod:
-    pod_index: int
-    type: str
-    has_child: list
-    coords: Pod_Coordinates
-    contains_astronaut: list
-    has_life_support: bool
-    critical_life_support_active: bool
-    has_fire: bool
-    fire_suppression_active: bool
-    has_other_hazard: bool
-    vent_active: bool
-    warning_alarm_active: bool
+    Pod_index: int
+    Type: str
+    Has_Child: list
+    Coordinates: Pod_Coordinates
+    Contains_Astronaut: list
+    Has_Life_Support: bool
+    Critical_Life_Support_Active: bool
+    Has_Fire: bool
+    Fire_Suppression_Active: bool
+    Has_Other_Hazard: bool
+    Vent_Active: bool
+    Warning_Alarm_Active: bool
 
 @dataclass
 class Gate_Info:
-    door_open_request : bool
-    door_angle: int
-    door_blocked: bool
-    manual_override: bool
-    door_locked: bool
+    Door_Open_Request : bool
+    Door_Angle: int
+    Door_Blocked: bool
+    Manual_Override: bool
+    Door_Locked: bool
 
     def __post_init__(self):
         # Validation & convertion of ints to bools
-        if self.door_angle not in range(0, 136):
+        if self.Door_Angle not in range(0, 136):
             raise InvalidDoorAngleValue(
-                angle_value=self.door_angle,
+                angle_value=self.Door_Angle,
                 message="Gate Door_Angle must be between 0 and 135"
                 )
-        self.door_open_request = bool(self.door_open_request)
-        self.door_blocked = bool(self.door_blocked)
-        self.manual_override = bool(self.manual_override)
-        self.door_locked = bool(self.door_locked)
+        self.door_open_request = bool(self.Door_Open_Request)
+        self.door_blocked = bool(self.Door_Blocked)
+        self.manual_override = bool(self.Manual_Override)
+        self.door_locked = bool(self.Door_Locked)
 
 @dataclass
 class Gate:
-    gate_id: str
+    Gate_id: str
     # Both are initialized to None so we can have the possiblity of
     # having only one gate info
-    int_gate: Gate_Info = None
-    ext_gate: Gate_Info = None
+    Int_gate: Gate_Info = None
+    Ext_gate: Gate_Info = None
 
 @dataclass
 class Airlock:
-    extractor_active: bool
-    vent_active: bool
-    has_fire: bool
-    fire_suppression_active: bool
-    has_other_hazard: bool
-    int_gate: Gate_Info = None
-    ext_gate: Gate_Info = None
+    Extractor_Active: bool
+    Vent_Active: bool
+    Has_Fire: bool
+    Fire_Suppression_Active: bool
+    Has_Other_Hazard: bool
+    Int_Gate: Gate_Info = None
+    Ext_Gate: Gate_Info = None
     
 @dataclass
 class Astronaut:
-    name: str
-    location: str
-    biometrics: None
-    authorisation: None
+    Name: str
+    Location: str
+    Biometrics: None
+    Authorisation: None
     
     

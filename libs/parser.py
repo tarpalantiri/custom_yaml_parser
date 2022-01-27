@@ -1,8 +1,6 @@
 import yaml
 from .models import Pod, Pod_Coordinates, Gate_Info, Gate
 
-KNOWN_DOCUMENTS = ['Pods', 'Gates', 'Airlocks', 'Astronauts']
-
 def parse_yaml(yaml_file_path="./facility.yaml"):
     """
     :param yaml_file_path: Path to the yaml file
@@ -15,24 +13,21 @@ def parse_yaml(yaml_file_path="./facility.yaml"):
 
 def make_pod(index, parsed_dict):
     formated_dict = dict()
-    # Turn all key strings to lower case, so the dataclass can be
-    # given a dict as a parameter
-    parsed_dict = {key.lower() : value for key, value in parsed_dict.items()}
     
     # Adding Pod Index
-    formated_dict["pod_index"] = int(index)
+    formated_dict["Pod_index"] = int(index)
     
     # Constructing Coordinates
-    formated_dict['coords'] = Pod_Coordinates(
-        north=parsed_dict["North"],
-        east=parsed_dict["East"],
-        south=parsed_dict["South"],
-        west=parsed_dict["West"]
+    formated_dict['Coordinates'] = Pod_Coordinates(
+        North=parsed_dict["North"],
+        East=parsed_dict["East"],
+        South=parsed_dict["South"],
+        West=parsed_dict["West"]
     )
     
     # Turn 1s and 0s to bools
     for key, value in parsed_dict.items():
-        if key not in ['north', 'east', 'south', 'west']:
+        if key not in ['North', 'East', 'South', 'West']:
             # Turn all the 1s and 0s to bools
             if isinstance(value, int):
                 value = bool(value)
@@ -41,8 +36,7 @@ def make_pod(index, parsed_dict):
 
 def make_gate(gate_id, parsed_dict):
     formated_dict = dict()
-    parsed_dict = { key.lower(): value for key, value in parsed_dict.items() }
-    formated_dict['gate_id'] = gate_id
+    formated_dict['Gate_id'] = gate_id
     # Add gate info
     for gate_loc, gate_info in parsed_dict.items():
         # Changing all parameters to lower_case for the inner dict
@@ -51,5 +45,6 @@ def make_gate(gate_id, parsed_dict):
         # Making a Gate_Info obejct
         formated_dict[gate_loc] = Gate_Info(**gate_info)
     return Gate(**formated_dict)
-        
-    
+
+def make_airlock(airlock_id, parsed_dict):
+    pass

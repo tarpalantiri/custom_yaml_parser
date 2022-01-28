@@ -5,7 +5,8 @@ libs
   |_  exceptions.py  (Custom exceptions for the program)
   |_  models.py      (Contains dataclasses which model and validate the the data comping from the YAML Parser)
   |_  parser.py      (Contains functions that take parsed data from pyYAML and return dataclasses defined by models.py)
-main.py      (Includes the program main execution function)
+facility.yaml   (YAML file required for parsing)
+main.py         (Includes the program main execution function)
 ```
 
 ## Info

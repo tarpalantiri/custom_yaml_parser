@@ -130,3 +130,5 @@ dmypy.json
 
 # IntelliJ Project settings files
 .idea/
+
+*.zip

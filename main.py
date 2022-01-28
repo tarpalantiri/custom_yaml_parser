@@ -1,16 +1,32 @@
 import os
 import yaml
+from rich.table import Table
+from rich.console import Console
+from dataclasses import fields
 from libs.parser import Custom_Parser
 
-FILE_NAME = 'facility.yaml'
+def show_table(dataclass_item):
+    console = Console()
+    table = Table(show_header=False)
+    table.add_column('Name')
+    table.add_column('Value')
+    for field in fields(dataclass_item):
+        name = field.name
+        value = str(getattr(dataclass_item, field.name))
+        table.add_row(
+            name, value
+        )
+    console.print(table)
+    
 
-def main(filename):
+def main():
+    filename = 'facility.yaml'
     # Getting file path
     current_dir = os.getcwd()
-    yaml_path = os.path.join(current_dir, FILE_NAME)
+    yaml_path = os.path.join(current_dir, filename)
     
     # Parsing YAML File
-    yaml_file_stream = open('./facility.yaml', 'r')
+    yaml_file_stream = open(yaml_path, 'r')
     all_docs = yaml.load_all(yaml_file_stream, Loader=yaml.FullLoader)
     
     # Seperating into individual dicts
@@ -35,6 +51,24 @@ def main(filename):
         Custom_Parser.make_astronaut(index, data) for index, data in
         astros_dict.items()
     )
+    
+    while True:
+        query = input('Query: [Pods, Gates, Airlocks, Astronauts]: ').lower()
+        if query == 'pods':
+            query_data = all_pods
+        elif query == 'gates':
+            query_data = all_gates
+        elif query == 'airlocks':
+            query_data = all_airlocks
+        elif query == 'astronauts':
+            query_data = all_astros
+        else:
+            print('Invalid Input')
+            continue
+        for item in query_data:
+            show_table(item)
+        continue
+        
 
 if __name__ == '__main__':
-    main(FILE_NAME)
+    main()

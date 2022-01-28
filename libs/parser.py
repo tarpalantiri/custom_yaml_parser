@@ -47,6 +47,7 @@ class Custom_Parser:
             'Id' : astro_id,
             'Name': parsed_dict['Name'],
             'Location': parsed_dict['Location'],
+            'Biometrics': parsed_dict['Biometrics'],
             'Authorisation': parsed_dict['Authorisation']
         }
         return Astronaut(**formated_dict)

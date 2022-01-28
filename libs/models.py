@@ -12,7 +12,10 @@ class Pod_Coordinates:
     East:  list
     
     def __str__(self):
-        return f"""North: {self.North} South: {self.South} West: {self.West} East: {self.East}"""
+        return f"""North: {self.North}
+South: {self.South}
+West:  {self.West}
+East:  {self.East}"""
 
 @dataclass(order=True, repr=True)
 class Pod:
@@ -39,22 +42,6 @@ class Pod:
         self.Vent_Active = bool(self.Vent_Active)
         self.Warning_Alarm_Active = bool(self.Warning_Alarm_Active)
         self.sort_index = self.Id
-    
-    def __str__(self):
-        return f"""*******************************************************************************
-Pod Number: {self.Id}
----------------------
-Type                         {self.Type}
-Has Child                    {self.Has_Child}
-Coordinates                  {str(self.Coordinates)}
-Contains Astronaut           {self.Contains_Astronaut}
-Has Life Support             {YES if self.Has_Life_Support else NO}
-Critical Life Support Active {YES if self.Critical_Life_Support_Active else NO}
-Has Fire                     {YES if self.Has_Fire else NO}
-Fire Suppression Active      {YES if self.Fire_Suppression_Active else NO}
-Has Other Hazard             {YES if self.Has_Other_Hazard else NO}
-Vent Active                  {YES if self.Vent_Active else NO}
-Warning Alarm Active         {YES if self.Warning_Alarm_Active else NO}"""
 
 @dataclass(order=True)
 class Gate_Info:
@@ -77,12 +64,11 @@ class Gate_Info:
         self.Door_Locked = bool(self.Door_Locked)
     
     def __str__(self):
-        return f"""Door Open Request {YES if self.Door_Open_Request else NO}
-Door Blocked      {YES if self.Door_Blocked else NO}
-Door Locked       {YES if self.Door_Locked else NO}
-Manual Override   {YES if self.Manual_Override else NO}
-Door Angle        {self.Door_Angle}°
-"""
+        return f"""Door Open Request: {YES if self.Door_Open_Request else NO}
+Door Blocked:    {YES if self.Door_Blocked else NO}
+Door Locked:     {YES if self.Door_Blocked else NO}
+Manual Override: {YES if self.Manual_Override else NO}
+Door Angle:      {self.Door_Angle}°"""
 
 @dataclass(order=True)
 class Gate:
@@ -94,14 +80,6 @@ class Gate:
     
     def __post_init__(self):
         self.sort_index = self.Id
-    
-    def __str__(self):
-        return f"""*************************
-Gate Number: {self.Id}
---------------------
-Interior Gate:
-{str(self.Int_Gate)}
-"""
 
 @dataclass(order=True)
 class Airlock:

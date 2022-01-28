@@ -9,5 +9,5 @@
   - [X] Accomplished Via dataclasses, more can be added as client demand
 
 ## Printing All Values
-  - [ ] Done
+  - [X] Done, with rich_tables
   

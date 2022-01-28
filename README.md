@@ -1,3 +1,13 @@
+## Project Structure
+```
+libs
+  |_  __init__.py    (Python specific requirement for package recognition)
+  |_  exceptions.py  (Custom exceptions for the program)
+  |_  models.py      (Contains dataclasses which model and validate the the data comping from the YAML Parser)
+  |_  parser.py      (Contains functions that take parsed data from pyYAML and return dataclasses defined by models.py)
+main.py      (Includes the program main execution function)
+```
+
 ## Info
 
 The program runs in a loop and queries for input, then shows tables for the corresponding data queried
